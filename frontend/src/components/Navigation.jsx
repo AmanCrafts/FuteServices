@@ -3,6 +3,7 @@ const navLinks = [
   { label: 'Amenities', href: '#amenities' },
   { label: 'Highlights', href: '#nearby-highlights' },
   { label: 'Gallery', href: '#gallery' },
+  { label: 'Location', href: '#location' },
   { label: 'Contact', href: '#booking-section' },
 ];
 

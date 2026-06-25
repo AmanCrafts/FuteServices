@@ -5,6 +5,7 @@ import Amenities from './components/Amenities';
 import VideoReview from './components/VideoReview';
 import NearbyHighlights from './components/NearbyHighlights';
 import Gallery from './components/Gallery';
+import ScheduleTourMap from './components/ScheduleTourMap';
 import BookingForm from './components/BookingForm';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <VideoReview />
       <NearbyHighlights />
       <Gallery />
+      <ScheduleTourMap />
       <BookingForm />
     </div>
   );

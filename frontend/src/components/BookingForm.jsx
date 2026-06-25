@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
+import VisitDatePicker from './VisitDatePicker';
 import {
-  getTodayDateString,
   hasValidationErrors,
   TIME_SLOTS,
   UNIT_TYPES,
@@ -57,6 +57,18 @@ const BookingForm = () => {
       setErrors((prev) => ({
         ...prev,
         [name]: validateField(name, nextValue),
+      }));
+    }
+  };
+
+  const handleDateChange = (dateValue) => {
+    setValues((prev) => ({ ...prev, date: dateValue }));
+    setSuccessMessage('');
+
+    if (submitAttempted) {
+      setErrors((prev) => ({
+        ...prev,
+        date: validateField('date', dateValue),
       }));
     }
   };
@@ -192,16 +204,13 @@ const BookingForm = () => {
                     <label htmlFor="date" className="block text-sm font-medium text-brand-dark mb-1.5">
                       Preferred Visit Date <span className="text-red-500">*</span>
                     </label>
-                    <input
-                      type="date"
+                    <VisitDatePicker
                       id="date"
-                      name="date"
-                      min={getTodayDateString()}
                       value={values.date}
-                      onChange={handleChange}
+                      onChange={handleDateChange}
+                      hasError={submitAttempted && Boolean(errors.date)}
                       aria-invalid={submitAttempted && errors.date ? 'true' : 'false'}
                       aria-describedby={errors.date ? 'date-error' : undefined}
-                      className={getFieldClass('date')}
                     />
                     {submitAttempted && errors.date && (
                       <FieldError id="date-error" message={errors.date} />

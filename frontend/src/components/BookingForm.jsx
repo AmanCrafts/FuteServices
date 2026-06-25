@@ -113,13 +113,14 @@ const BookingForm = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           {/* Section intro */}
           <div className="lg:col-span-4 lg:sticky lg:top-24">
-            <p className="text-sm font-semibold text-brand-dark mb-3">
+            <p className="section-label mb-4">
               (06) Book a Site Visit
             </p>
-            <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-brand-dark leading-tight mb-4">
+            <h2 className="font-serif font-semibold text-brand-dark leading-tight mb-4"
+                style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', letterSpacing: '-0.01em' }}>
               Schedule your personal tour
             </h2>
-            <p className="text-sm sm:text-base text-brand-dark/65 leading-relaxed">
+            <p className="text-sm sm:text-[0.9375rem] text-brand-dark/60 leading-relaxed">
               Walk through Sky Heights Avenue, explore sample apartments, and meet our sales team.
               Pick a date and time that works for you.
             </p>

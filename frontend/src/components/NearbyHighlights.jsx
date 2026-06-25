@@ -28,11 +28,11 @@ const highlights = [
 ];
 
 const HighlightItem = ({ title, description }) => (
-  <div className="py-5 border-b border-slate-200">
-    <h3 className="text-xs font-bold uppercase tracking-wide text-brand-dark mb-1.5">
+  <div className="py-5 border-b border-slate-100">
+    <h3 className="text-[0.8125rem] font-semibold text-brand-dark/90 mb-1.5 tracking-wide">
       {title}
     </h3>
-    <p className="text-sm text-brand-dark/65 leading-relaxed">{description}</p>
+    <p className="text-[0.875rem] text-brand-dark/55 leading-relaxed">{description}</p>
   </div>
 );
 

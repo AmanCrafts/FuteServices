@@ -112,9 +112,9 @@ const Gallery = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 py-12 lg:py-16">
           {/* Section label */}
           <div className="lg:col-span-3">
-            <h2 className="text-sm font-semibold text-brand-dark tracking-tight">
+            <p className="section-label">
               (05) Gallery Of The Apartment
-            </h2>
+            </p>
           </div>
 
           {/* Gallery content */}
@@ -127,7 +127,7 @@ const Gallery = () => {
                     key={tab}
                     type="button"
                     onClick={() => handleTabChange(tab)}
-                    className={`text-lg sm:text-xl font-semibold capitalize transition-colors cursor-pointer ${
+                    className={`text-base sm:text-lg font-semibold capitalize transition-colors cursor-pointer tracking-tight ${
                       activeTab === tab
                         ? 'text-brand-dark'
                         : 'text-brand-muted hover:text-brand-dark/60'
@@ -137,7 +137,7 @@ const Gallery = () => {
                   </button>
                 ))}
               </div>
-              <span className="text-3xl sm:text-4xl font-semibold text-brand-dark tabular-nums">
+              <span className="text-2xl sm:text-3xl font-semibold text-brand-dark tabular-nums tracking-tight">
                 {countLabel}
               </span>
             </div>

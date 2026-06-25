@@ -41,13 +41,14 @@ const ScheduleTourMap = () => {
           {/* Left — tour info */}
           <div className="flex flex-col justify-between gap-10 p-8 sm:p-10 lg:p-12 bg-slate-100">
             <div>
-              <p className="text-sm font-medium text-brand-dark/70 mb-4">
+              <p className="section-label mb-4">
                 Schedule a Tour
               </p>
-              <h2 className="text-3xl sm:text-4xl font-semibold text-brand-dark leading-tight tracking-tight mb-5">
+              <h2 className="font-serif font-semibold text-brand-dark leading-tight tracking-tight mb-5"
+                  style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', letterSpacing: '-0.01em' }}>
                 See It in Person or From the Comfort of Home
               </h2>
-              <p className="text-sm sm:text-base text-brand-dark/65 leading-relaxed max-w-md">
+              <p className="text-sm sm:text-[0.9375rem] text-brand-dark/60 leading-relaxed max-w-md">
                 Whether you prefer an in-person walk-through of Sky Heights Avenue or a guided
                 virtual tour with our sales team, we make it easy to explore the project on your
                 terms. Tours are free and no-obligation.

@@ -3,13 +3,13 @@ const SectionBlock = ({ number, title, id, children, showDivider = true }) => {
     <>
       <div id={id} className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 py-12 lg:py-16">
         <div className="lg:col-span-3">
-          <h2 className="text-sm font-semibold text-brand-dark tracking-tight">
+          <p className="section-label">
             ({number}) {title}
-          </h2>
+          </p>
         </div>
         <div className="lg:col-span-9">{children}</div>
       </div>
-      {showDivider && <hr className="border-slate-200" />}
+      {showDivider && <hr className="border-slate-100" />}
     </>
   );
 };

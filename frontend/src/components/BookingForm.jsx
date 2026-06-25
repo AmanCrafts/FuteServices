@@ -24,6 +24,58 @@ const SUCCESS_MESSAGE =
 const inputBase =
   'w-full px-4 py-3 text-sm sm:text-base rounded-xl border bg-white text-brand-dark placeholder:text-brand-muted/60 transition-colors outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent';
 
+const UNIT_PRICES = {
+  '2 BHK':  { label: '₹82 Lakhs',  note: 'onwards' },
+  '3 BHK':  { label: '₹1.05 Cr',  note: 'onwards' },
+  'Duplex': { label: '₹1.65 Cr',  note: 'onwards' },
+};
+
+const UnitPriceHint = ({ unitType }) => {
+  const price = UNIT_PRICES[unitType];
+  return (
+    <div
+      className="mt-2.5 flex items-center gap-2.5 min-h-[28px]"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      {price ? (
+        /* Price revealed — animate in */
+        <div
+          key={unitType}
+          style={{
+            display: 'flex', alignItems: 'center', gap: '0.5rem',
+            animation: 'unitPriceIn 0.22s cubic-bezier(0.22,1,0.36,1) both',
+          }}
+        >
+          <style>{`
+            @keyframes unitPriceIn {
+              from { opacity: 0; transform: translateY(4px); }
+              to   { opacity: 1; transform: translateY(0); }
+            }
+          `}</style>
+          {/* Home icon */}
+          <span className="flex items-center justify-center w-6 h-6 rounded-full bg-brand-blue/60 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                 className="w-3 h-3 text-brand-blue-dark">
+              <path d="M10.707 2.293a1 1 0 0 0-1.414 0l-7 7a1 1 0 0 0 1.414 1.414L4 10.414V17a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-6.586l.293.293a1 1 0 0 0 1.414-1.414l-7-7Z" />
+            </svg>
+          </span>
+          <span className="text-[0.8rem] text-brand-dark/50 leading-none">Approx. price</span>
+          <span className="text-sm font-semibold text-brand-dark leading-none tracking-tight">
+            {price.label}
+          </span>
+          <span className="text-[0.75rem] text-brand-dark/40 leading-none">{price.note}</span>
+        </div>
+      ) : (
+        /* Empty-state prompt */
+        <p className="text-[0.8rem] text-brand-muted/70 leading-none italic">
+          Select a unit type to view the approximate price
+        </p>
+      )}
+    </div>
+  );
+};
+
 const FieldError = ({ id, message }) => (
   <p id={id} role="alert" className="text-xs text-red-600 mt-1.5">
     {message}
@@ -257,7 +309,9 @@ const BookingForm = () => {
                     value={values.unitType}
                     onChange={handleChange}
                     aria-invalid={submitAttempted && errors.unitType ? 'true' : 'false'}
-                    aria-describedby={errors.unitType ? 'unitType-error' : undefined}
+                    aria-describedby={
+                      errors.unitType ? 'unitType-error' : 'unitType-price-hint'
+                    }
                     className={`${getFieldClass('unitType')} appearance-none`}
                   >
                     <option value="">Select unit type</option>
@@ -267,6 +321,12 @@ const BookingForm = () => {
                       </option>
                     ))}
                   </select>
+
+                  {/* Price hint — always rendered, content swaps on selection */}
+                  <div id="unitType-price-hint">
+                    <UnitPriceHint unitType={values.unitType} />
+                  </div>
+
                   {submitAttempted && errors.unitType && (
                     <FieldError id="unitType-error" message={errors.unitType} />
                   )}

@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-green: #8ea890;
+  --color-brand-green-hover: #78927a;
+
+  --color-brand-blue: #c8dff5;
+  --color-brand-blue-hover: #b0cfea;
+  --color-brand-blue-dark: #5a9fd4;
+
+  --color-brand-dark: #1a1a1a;
+  --color-brand-light: #f8fafc;
+  --color-brand-muted: #9ca3af;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "DM Sans", "Inter", system-ui, -apple-system, sans-serif;
+}
+
+@variant dark (&:where(.dark, .dark *));
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+@keyframes checkmark {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-checkmark {
+  animation: checkmark 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.rounded-leaf-tl {
+  border-top-left-radius: 4rem;
+}
+.rounded-leaf-br {
+  border-bottom-right-radius: 4rem;
+}
+.rounded-leaf-tr {
+  border-top-right-radius: 4rem;
+}
+.rounded-leaf-bl {
+  border-bottom-left-radius: 4rem;
+}

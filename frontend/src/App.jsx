@@ -5,6 +5,7 @@ import Amenities from './components/Amenities';
 import VideoReview from './components/VideoReview';
 import NearbyHighlights from './components/NearbyHighlights';
 import Gallery from './components/Gallery';
+import BookingForm from './components/BookingForm';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <VideoReview />
       <NearbyHighlights />
       <Gallery />
+      <BookingForm />
     </div>
   );
 }

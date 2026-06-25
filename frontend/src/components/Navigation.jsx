@@ -1,9 +1,9 @@
 const navLinks = [
-  { label: 'Overview', href: '#project-details' },
+  { label: 'Overview', href: '#overview' },
   { label: 'Amenities', href: '#amenities' },
-  { label: 'Location', href: '#location' },
+  { label: 'Video', href: '#video-review' },
   { label: 'Gallery', href: '#gallery' },
-  { label: 'About', href: '#about' },
+  { label: 'Contact', href: '#booking-section' },
 ];
 
 const Navigation = () => {

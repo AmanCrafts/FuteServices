@@ -1,8 +1,9 @@
 import { useRef, useState } from 'react';
 import VisitDatePicker from './VisitDatePicker';
+import VisitTimeSlotPicker from './VisitTimeSlotPicker';
 import {
   hasValidationErrors,
-  TIME_SLOTS,
+  isSlotPast,
   UNIT_TYPES,
   validateBookingForm,
 } from '../utils/validation';
@@ -42,9 +43,12 @@ const BookingForm = () => {
   };
 
   const validateField = (name, value) => {
-    const fieldErrors = validateBookingForm({ ...values, [name]: value });
+    const nextValues = { ...values, [name]: value };
+    const fieldErrors = validateBookingForm(nextValues);
     return fieldErrors[name];
   };
+
+  const validateAllFields = (nextValues) => validateBookingForm(nextValues);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -62,15 +66,19 @@ const BookingForm = () => {
   };
 
   const handleDateChange = (dateValue) => {
-    setValues((prev) => ({ ...prev, date: dateValue }));
     setSuccessMessage('');
 
-    if (submitAttempted) {
-      setErrors((prev) => ({
-        ...prev,
-        date: validateField('date', dateValue),
-      }));
-    }
+    setValues((prev) => {
+      const clearedSlot =
+        prev.slot && isSlotPast(prev.slot, dateValue) ? '' : prev.slot;
+      const nextValues = { ...prev, date: dateValue, slot: clearedSlot };
+
+      if (submitAttempted) {
+        setErrors(validateAllFields(nextValues));
+      }
+
+      return nextValues;
+    });
   };
 
   const handleSubmit = (e) => {
@@ -221,22 +229,16 @@ const BookingForm = () => {
                     <label htmlFor="slot" className="block text-sm font-medium text-brand-dark mb-1.5">
                       Preferred Time Slot <span className="text-red-500">*</span>
                     </label>
-                    <select
+                    <VisitTimeSlotPicker
                       id="slot"
-                      name="slot"
+                      date={values.date}
                       value={values.slot}
                       onChange={handleChange}
+                      hasError={submitAttempted && Boolean(errors.slot)}
                       aria-invalid={submitAttempted && errors.slot ? 'true' : 'false'}
                       aria-describedby={errors.slot ? 'slot-error' : undefined}
-                      className={`${getFieldClass('slot')} appearance-none`}
-                    >
-                      <option value="">Select a time slot</option>
-                      {TIME_SLOTS.map((slot) => (
-                        <option key={slot} value={slot}>
-                          {slot}
-                        </option>
-                      ))}
-                    </select>
+                      className={`${getFieldClass('slot')} appearance-none disabled:opacity-60 disabled:cursor-not-allowed`}
+                    />
                     {submitAttempted && errors.slot && (
                       <FieldError id="slot-error" message={errors.slot} />
                     )}

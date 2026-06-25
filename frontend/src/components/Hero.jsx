@@ -48,8 +48,6 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left — property info */}
           <div className="lg:col-span-5 flex flex-col">
-
-            {/* Eyebrow label */}
             <p className="section-label mb-5">
               Sarjapur Road · Bangalore
             </p>

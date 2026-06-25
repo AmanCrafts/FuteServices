@@ -7,6 +7,7 @@ import NearbyHighlights from './components/NearbyHighlights';
 import Gallery from './components/Gallery';
 import ScheduleTourMap from './components/ScheduleTourMap';
 import BookingForm from './components/BookingForm';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Gallery />
       <ScheduleTourMap />
       <BookingForm />
+      <Footer />
     </div>
   );
 }

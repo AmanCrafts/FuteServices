@@ -13,9 +13,6 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[68px] flex items-center justify-between gap-6">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2.5 shrink-0">
-          <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-brand-blue text-brand-blue-dark font-bold text-base leading-none">
-            S
-          </span>
           <span className="text-[1.0625rem] font-semibold tracking-tight text-brand-dark leading-none">
             Sky Heights
           </span>

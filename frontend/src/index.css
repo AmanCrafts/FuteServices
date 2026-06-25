@@ -59,6 +59,10 @@ body {
 .rounded-leaf-tr {
   border-top-right-radius: 4rem;
 }
-.rounded-leaf-bl {
-  border-bottom-left-radius: 4rem;
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }

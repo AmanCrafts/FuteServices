@@ -1,7 +1,7 @@
 const navLinks = [
   { label: 'Overview', href: '#overview' },
   { label: 'Amenities', href: '#amenities' },
-  { label: 'Video', href: '#video-review' },
+  { label: 'Highlights', href: '#nearby-highlights' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Contact', href: '#booking-section' },
 ];

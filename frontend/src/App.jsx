@@ -3,6 +3,8 @@ import Hero from './components/Hero';
 import Overview from './components/Overview';
 import Amenities from './components/Amenities';
 import VideoReview from './components/VideoReview';
+import NearbyHighlights from './components/NearbyHighlights';
+import Gallery from './components/Gallery';
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
       <Overview />
       <Amenities />
       <VideoReview />
+      <NearbyHighlights />
+      <Gallery />
     </div>
   );
 }
